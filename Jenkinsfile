@@ -1,10 +1,5 @@
 pipeline {
-   agent {
-     docker {
-     image 'node:16'
-                    args '-v ${WORKSPACE}:/app'
-                }
-            }
+    agent any
     environment {
         DOCKER_IMAGE = "shubh26/dind-node-jenkins"
     }
@@ -15,6 +10,12 @@ pipeline {
             }
         }
         stage('Build and Test') {
+            agent {
+                docker {
+                    image 'node:16'
+                    args '-v ${WORKSPACE}:/app'
+                }
+            }
             steps {
                 echo "Installing Dependencies"
                 sh "npm cache clean --force"
