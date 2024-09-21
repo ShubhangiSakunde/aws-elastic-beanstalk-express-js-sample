@@ -8,7 +8,7 @@ RUN npm install --omit=dev
 
 COPY . .
 
-RUN adduser -u 1001 -D appuser && chown -R appuser /usr/src/app
+RUN adduser --disabled-password --gecos "" --uid 1001 appuser && chown -R appuser /usr/src/app
 
 USER appuser
 
