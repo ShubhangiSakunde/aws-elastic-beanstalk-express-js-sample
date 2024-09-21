@@ -1,7 +1,7 @@
 pipeline {
-            agent {
-                docker {
-                    image 'node:16'
+   agent {
+     docker {
+     image 'node:16'
                     args '-v ${WORKSPACE}:/app'
                 }
             }
@@ -15,7 +15,6 @@ pipeline {
             }
         }
         stage('Build and Test') {
-
             steps {
                 echo "Installing Dependencies"
                 sh "npm cache clean --force"
@@ -34,7 +33,6 @@ pipeline {
             }
         }
         stage('Build and Push Docker Image') {
-            agent any
             steps {
                 script {
                     def timestamp = new Date().format("yyyyMMdd_HHmmss")
