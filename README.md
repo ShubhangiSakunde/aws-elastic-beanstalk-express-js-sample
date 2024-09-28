@@ -62,6 +62,26 @@ The CI/CD pipeline automates the build, testing, and deployment process for the 
 - Snyk is used for vulnerability scanning in the project dependencies.
 - The pipeline will stop if any critical vulnerabilities are detected.
 
+### Logging and Monitoring with Splunk
+
+Splunk is integrated into the Jenkins pipeline to capture logs and provide real-time monitoring of the CI/CD process.
+
+#### Docker Compose Splunk Setup:
+
+- The `docker-compose.yml` is modified to include a Splunk instance to collect and analyze logs from Jenkins.
+
+#### Configure Splunk:
+
+1. Install the Splunk plugin for Jenkins.
+2. Login to the Splunk instance (`http://localhost:8000`) with the default credentials (admin/changeme).
+3. Set up a new HTTP Event Collector (HEC) token in Splunk to receive logs from Jenkins.
+4. Paste the token in Jenkins under the Splunk plugin settings and enable log forwarding.
+
+#### Viewing Logs:
+
+- Access the Jenkins logs and pipeline execution data directly in the Splunk dashboard.
+- Splunk will track key events like build failures, test results, and security scan outcomes, providing real-time insights into the pipeline's health.
+
 ## Security
 
 For information about how to report security issues, see [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications).
